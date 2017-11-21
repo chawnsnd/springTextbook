@@ -3,6 +3,7 @@ package org.chawnsnd.persistence;
 import java.util.List;
 
 import org.chawnsnd.domain.BoardVO;
+import org.chawnsnd.domain.Criteria;
 
 public interface BoardDAO {
 
@@ -15,4 +16,8 @@ public interface BoardDAO {
 	public void delete(Integer bno)throws Exception;
 	
 	public List<BoardVO> listAll()throws Exception;
+	
+	public List<BoardVO> listCriteria(Criteria cri)throws Exception;
+	
+	public int countPaging(Criteria cir)throws Exception;
 }
