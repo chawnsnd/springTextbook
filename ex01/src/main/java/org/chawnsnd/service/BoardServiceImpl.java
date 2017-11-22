@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.chawnsnd.domain.BoardVO;
 import org.chawnsnd.domain.Criteria;
+import org.chawnsnd.domain.SearchCriteria;
 import org.chawnsnd.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,16 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int listCountCriteria(Criteria cri)throws Exception{
 		return dao.countPaging(cri);
+	}
+	
+	@Override
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri)throws Exception{
+		return dao.listSearch(cri);
+	}
+	
+	@Override
+	public int listSearchCount(SearchCriteria cri)throws Exception{
+		return dao.listSearchCount(cri);
 	}
 
 }

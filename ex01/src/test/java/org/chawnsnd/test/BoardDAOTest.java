@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.chawnsnd.domain.BoardVO;
 import org.chawnsnd.domain.Criteria;
+import org.chawnsnd.domain.SearchCriteria;
 import org.chawnsnd.persistence.BoardDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,7 +63,7 @@ public class BoardDAOTest {
 		}
 	}
 	*/
-	@Test
+/*	@Test
 	public void testURI() throws Exception{
 		
 		UriComponents uriComponents =
@@ -76,5 +77,25 @@ public class BoardDAOTest {
 		
 		logger.info("/board/read?bno=12&perPageNum=20");
 		logger.info(uriComponents.toString());
+	}*/
+	
+	@Test
+	public void testDynamic1() throws Exception{
+		
+		SearchCriteria cri = new SearchCriteria();
+		cri.setPage(1);
+		cri.setKeyword("±Û");
+		cri.setSearchType("t");
+		
+		logger.info("==================================");
+		
+		List<BoardVO> list = dao.listSearch(cri);
+		
+		for(BoardVO boardVO : list) {
+			logger.info(boardVO.getBno()+":"+boardVO.getTitle());
+		}
+		
+		logger.info("==================================");
+		logger.info("COUNT: "+dao.listSearchCount(cri));
 	}
 }

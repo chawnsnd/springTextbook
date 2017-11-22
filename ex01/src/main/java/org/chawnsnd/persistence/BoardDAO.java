@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.chawnsnd.domain.BoardVO;
 import org.chawnsnd.domain.Criteria;
+import org.chawnsnd.domain.SearchCriteria;
 
 public interface BoardDAO {
 
@@ -20,4 +21,8 @@ public interface BoardDAO {
 	public List<BoardVO> listCriteria(Criteria cri)throws Exception;
 	
 	public int countPaging(Criteria cir)throws Exception;
+	
+	public List<BoardVO> listSearch(SearchCriteria cri)throws Exception;
+	
+	public int listSearchCount(SearchCriteria cri)throws Exception;
 }

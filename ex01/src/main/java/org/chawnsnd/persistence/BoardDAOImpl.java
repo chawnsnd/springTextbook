@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.chawnsnd.domain.BoardVO;
 import org.chawnsnd.domain.Criteria;
+import org.chawnsnd.domain.SearchCriteria;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -51,6 +52,16 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public int countPaging(Criteria cri) throws Exception{
 		return session.selectOne(namespace+".countPaging", cri);
+	}
+	
+	@Override
+	public List<BoardVO> listSearch(SearchCriteria cri)throws Exception{
+		return session.selectList(namespace+".listSearch", cri);
+	}
+	
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception{
+		return session.selectOne(namespace+".listSearchCount", cri);
 	}
 
 }
